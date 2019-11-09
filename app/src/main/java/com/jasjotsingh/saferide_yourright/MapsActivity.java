@@ -1,15 +1,16 @@
 package com.jasjotsingh.saferide_yourright;
 
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.FragmentActivity;
-
+import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentActivity;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -29,7 +30,7 @@ import java.util.List;
 import static com.jasjotsingh.saferide_yourright.CombuyUtils.obtenerCercanos;
 import static com.jasjotsingh.saferide_yourright.CombuyUtils.test;
 
-public class LocationActivity extends FragmentActivity implements OnMapReadyCallback, ActivityCompat.OnRequestPermissionsResultCallback{
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, ActivityCompat.OnRequestPermissionsResultCallback{
 
     private static final int DEFAULT_ZOOM = 15;
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
@@ -98,12 +99,12 @@ public class LocationActivity extends FragmentActivity implements OnMapReadyCall
          * onRequestPermissionsResult
          */
         if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
-                android.Manifest.permission.ACCESS_FINE_LOCATION)
+                Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
             PermisoConcedido = true;
         } else {
             ActivityCompat.requestPermissions(this,
-                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                     PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
         }
     }
@@ -161,13 +162,13 @@ public class LocationActivity extends FragmentActivity implements OnMapReadyCall
                             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
                                     new LatLng(CurrentLocation.getLatitude(),
                                             CurrentLocation.getLongitude()), DEFAULT_ZOOM));
-                            Log.v("TASK","ESTA ES LA UBICACION");
-                            Log.v("TASK",test(CurrentLocation));
+                                Log.v("TASK","ESTA ES LA UBICACION");
+                                Log.v("TASK",test(CurrentLocation));
 
-                            locales = obtenerCercanos(CurrentLocation,5);
-                            obtenerLocales();
+                                locales = obtenerCercanos(CurrentLocation,5);
+                                obtenerLocales();
 
-                            //locales=CombuyUtils.obtenerCercanos(CurrentLocation,2);
+                                //locales=CombuyUtils.obtenerCercanos(CurrentLocation,2);
                         } else {
                             Log.d("MAPS", "Current location is null. Using defaults.");
                             Log.e("MAPS", "Exception: %s", task.getException());

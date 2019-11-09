@@ -24,17 +24,17 @@ public class MainActivity extends AppCompatActivity {
         // Array of strings storing country names
         final String[] properties = new String[] {
                 "Plot",
-                "Built Up",
-                "Godown",
-                "Shed"
+                "Table",
+                "Location",
+                "Contact Us"
         };
 
         // Array of integers points to images stored in /res/drawable-ldpi/
         int[] images = new int[]{
-                R.drawable.ic_noun_land_for_sale_666591,
-                R.drawable.ic_noun_industry_500580,
-                R.drawable.ic_noun_barn_1823018,
-                R.drawable.ic_noun_barn_1823018
+                R.drawable.heartbeat,
+                R.drawable.gear,
+                R.drawable.pin,
+                R.drawable.contact
         };
         CustomGrid adapter = new CustomGrid(MainActivity.this, properties, images);
         grid=(GridView)findViewById(R.id.grid);
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(tableIntent);
              }
                 if(position==2){
-                    Intent locationIntent = new Intent(MainActivity.this,LocationActivity.class);
+                    Intent locationIntent = new Intent(MainActivity.this, LocationActivity.class);
                     startActivity(locationIntent);
                 }
             }

@@ -9,7 +9,9 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.text.style.LineHeightSpan;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
@@ -27,11 +29,13 @@ public class GraphActivity extends AppCompatActivity implements SensorEventListe
     private static final String TAG = "MainActivity";
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
-    private  Sensor sensors;
+    private TextView xText,yText,zText;
+    private Sensor mySensor;
 
     private LineChart mChart;
     private Thread thread;
     private boolean plotData = true;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,10 +63,10 @@ public class GraphActivity extends AppCompatActivity implements SensorEventListe
         mChart.getDescription().setText("Real Time Accelerometer Plot");
 
         // enable touch gestures
-        mChart.setTouchEnabled(true);
+        mChart.setTouchEnabled(false);
 
         // enable scaling and dragging
-        mChart.setDragEnabled(true);
+        mChart.setDragEnabled(false);
         mChart.setScaleEnabled(true);
         mChart.setDrawGridBackground(false);
 
@@ -107,6 +111,20 @@ public class GraphActivity extends AppCompatActivity implements SensorEventListe
 
         feedMultiple();
 
+        xText = findViewById(R.id.xText);
+        yText = findViewById(R.id.yText);
+        zText = findViewById(R.id.zText);
+
+        //create our sensor manager
+        mSensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);
+
+        //Accelerometer Sensor
+        mySensor = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+
+        //Register Sensor Listener
+        mSensorManager.registerListener(this,mySensor,SensorManager.SENSOR_DELAY_NORMAL);
+
+        //
     }
 
     private void addEntry(SensorEvent event) {
@@ -145,9 +163,9 @@ public class GraphActivity extends AppCompatActivity implements SensorEventListe
         LineDataSet set = new LineDataSet(null, "Dynamic Data");
         set.setAxisDependency(YAxis.AxisDependency.LEFT);
         set.setLineWidth(3f);
-        set.setColor(Color.MAGENTA);
         set.setHighlightEnabled(false);
-        set.setDrawValues(false);
+        set.setDrawValues(true);
+        set.setColor(Color.BLUE);
         set.setDrawCircles(false);
         set.setMode(LineDataSet.Mode.CUBIC_BEZIER);
         set.setCubicIntensity(0.2f);
@@ -201,6 +219,9 @@ public class GraphActivity extends AppCompatActivity implements SensorEventListe
             addEntry(event);
             plotData = false;
         }
+        xText.setText("X : "+event.values[0]);
+        yText.setText("Y : "+event.values[0]);
+        zText.setText("Z : "+event.values[0]);
     }
 
 
