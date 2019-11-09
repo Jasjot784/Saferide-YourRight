@@ -54,6 +54,10 @@ public class MainActivity extends AppCompatActivity {
                     Intent tableIntent = new Intent(MainActivity.this,TableActivity.class);
                     startActivity(tableIntent);
              }
+                if(position==2){
+                    Intent locationIntent = new Intent(MainActivity.this,LocationActivity.class);
+                    startActivity(locationIntent);
+                }
             }
         });
     }
