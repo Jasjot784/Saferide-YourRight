@@ -50,6 +50,10 @@ public class MainActivity extends AppCompatActivity {
                     Intent graphIntent = new Intent(MainActivity.this,GraphActivity.class);
                     startActivity(graphIntent);
                 }
+                if(position==1){
+                    Intent tableIntent = new Intent(MainActivity.this,TableActivity.class);
+                    startActivity(tableIntent);
+             }
             }
         });
     }
