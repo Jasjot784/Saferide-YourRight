@@ -58,6 +58,10 @@ public class MainActivity extends AppCompatActivity {
                     Intent locationIntent = new Intent(MainActivity.this, LocationActivity.class);
                     startActivity(locationIntent);
                 }
+                if(position==3){
+                    Intent locationIntent = new Intent(MainActivity.this, ContactUsActivity.class);
+                    startActivity(locationIntent);
+                }
             }
         });
     }
