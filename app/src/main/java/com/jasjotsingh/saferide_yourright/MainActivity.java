@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         // Array of strings storing country names
         final String[] properties = new String[] {
                 "Plot",
-                "Table",
+                "Speed",
                 "Location",
                 "Contact Us"
         };
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         // Array of integers points to images stored in /res/drawable-ldpi/
         int[] images = new int[]{
                 R.drawable.heartbeat,
-                R.drawable.gear,
+                R.drawable.speedometer,
                 R.drawable.pin,
                 R.drawable.contact
         };
