@@ -21,6 +21,8 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
@@ -35,6 +37,9 @@ public class GraphActivity extends AppCompatActivity implements SensorEventListe
     private LineChart mChart;
     private Thread thread;
     private boolean plotData = true;
+    // Write a message to the database
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+
 
 
     @Override
@@ -222,6 +227,13 @@ public class GraphActivity extends AppCompatActivity implements SensorEventListe
         xText.setText("X : "+event.values[0]);
         yText.setText("Y : "+event.values[0]);
         zText.setText("Z : "+event.values[0]);
+
+        DatabaseReference myRef = database.getReference("Acceleration X");
+        myRef.setValue(xText.getText().toString());
+        DatabaseReference myRef1 = database.getReference("Acceleration Y");
+        myRef1.setValue(yText.getText().toString());
+        DatabaseReference myRef2 = database.getReference("Acceleration Z");
+        myRef2.setValue(zText.getText().toString());
     }
 
 

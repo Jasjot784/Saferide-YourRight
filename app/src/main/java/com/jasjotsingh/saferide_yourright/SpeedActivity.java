@@ -14,7 +14,13 @@ import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class TableActivity extends AppCompatActivity implements LocationListener {
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+public class SpeedActivity extends AppCompatActivity implements LocationListener {
+
+    // Write a message to the database
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -49,6 +55,8 @@ public class TableActivity extends AppCompatActivity implements LocationListener
             float nCurrentSpeed = location.getSpeed();
             txt.setText(nCurrentSpeed+" m/s");
         }
+        DatabaseReference myref = database.getReference("Speed");
+        myref.setValue(txt.getText().toString());
 
     }
 

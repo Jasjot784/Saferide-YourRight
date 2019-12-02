@@ -23,6 +23,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
@@ -43,6 +45,9 @@ public class LocationActivity extends FragmentActivity implements OnMapReadyCall
     private boolean PermisoConcedido ;
 
     private List<CombuyLocal> locales;
+    // Write a message to the database
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +60,7 @@ public class LocationActivity extends FragmentActivity implements OnMapReadyCall
         mapFragment.getMapAsync(this);
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+
     }
 
     @Override
@@ -166,6 +172,10 @@ public class LocationActivity extends FragmentActivity implements OnMapReadyCall
 
                             locales = obtenerCercanos(CurrentLocation,5);
                             obtenerLocales();
+                            DatabaseReference myref = database.getReference("Location Latitude");
+                            myref.setValue(CurrentLocation.getLatitude());
+                            DatabaseReference myref1 = database.getReference("Location Longitude");
+                            myref1.setValue(CurrentLocation.getLongitude());
 
                             //locales=CombuyUtils.obtenerCercanos(CurrentLocation,2);
                         } else {

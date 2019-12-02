@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "790015898884",
+    "firebase_url": "https://saferide-yourright.firebaseio.com",
+    "project_id": "saferide-yourright",
+    "storage_bucket": "saferide-yourright.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:790015898884:android:815c0baddf86ea0811cc51",
+        "android_client_info": {
+          "package_name": "com.jasjotsingh.saferide_yourright"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "790015898884-t2thsqsr9qohifi9c4a18ci9r68iolms.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jasjotsingh.saferide_yourright",
+            "certificate_hash": "3602d92994bcc0bd775f4cc7272fb16d250550e8"
+          }
+        },
+        {
+          "client_id": "790015898884-m0bmjqmva53uk4g8gc72mj39662brj16.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjxGgTytCwHIxAoaC4CT6yzhRGI6w7a_I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "790015898884-m0bmjqmva53uk4g8gc72mj39662brj16.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
